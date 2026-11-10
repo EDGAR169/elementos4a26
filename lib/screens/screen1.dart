@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mi_empty_aplication/screens/Screen3.dart';
 import 'package:mi_empty_aplication/screens/Screen4.dart';
+import 'package:mi_empty_aplication/screens/screen5.dart'; 
 import 'package:mi_empty_aplication/screens/screen2.dart'; //stles
 
 class Screen1 extends StatelessWidget {
@@ -40,6 +41,10 @@ class Screen1 extends StatelessWidget {
                 boton('Ejemplo de ListReview', const Color.fromARGB(255, 71, 19, 214), context, Screen3()),
                 SizedBox(height: 20),
                 boton('Entradas de datos', const Color.fromARGB(255, 200, 14, 33), context, Screen4()),
+                SizedBox(height: 20,),
+                botonStateful(
+                  'Elemento de entrada', Colors.cyan, context, Screen5())
+
             
               ],),
           ),
@@ -50,6 +55,37 @@ class Screen1 extends StatelessWidget {
    Color color1,
    BuildContext context,
    StatelessWidget screen,
+   ){
+    return ElevatedButton (
+      onPressed:(){
+        Navigator.push(
+          context, 
+          MaterialPageRoute(builder: (context) => screen));
+      }, 
+      
+        style: ElevatedButton.styleFrom(
+          backgroundColor: color1,
+          padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),//Espacio de borde de boton (Margen)
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          )
+        ),
+        child: Text(
+        texto,
+        style:TextStyle(
+          color: Colors.white,
+          fontSize:20,
+        ),),
+
+    );
+
+  }
+
+
+  Widget botonStateful (String texto,
+   Color color1,
+   BuildContext context,
+   StatefulWidget screen,
    ){
     return ElevatedButton (
       onPressed:(){

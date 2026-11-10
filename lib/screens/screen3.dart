@@ -8,12 +8,21 @@ class Screen3 extends StatelessWidget {
     'Ginger': 'assets/imgs/img1.png',
     'KC' : 'assets/imgs/img2.png',
     'Nahoshi': 'assets/imgs/img3.png',
-    'Nicky' : 'assets/imgs/img4.jpg',
+    'Oscar' : 'assets/imgs/img4.jpg',
     'Josue' : 'assets/imgs/img5.png' ,
     'Aldo' : 'assets/imgs/pibble.jpg',
   };
 
-  final cats = const ['CAT1','CAT2','CAT3','CAT4',];
+  final Map<String, String> cats = const{
+   
+    'kity ': 'assets/imgs/cat0.png',
+    'Muso' :'assets/imgs/cat1.png',
+    'Astra' :'assets/imgs/cat2.png',
+  };
+  
+
+
+  
 
 
   @override
@@ -28,30 +37,24 @@ class Screen3 extends StatelessWidget {
                perro.value,
                Colors.blueAccent,
                Colors.redAccent,
-               Colors.white
+               const Color.fromARGB(255, 179, 12, 12)
                );
           }),
           
           Divider(), 
-          ...cats.map((cat)=>ListTile(
-            leading: Icon(Icons.pets_rounded), // tipo de icon
-            title: Text(cat),
-            subtitle: Text('Tamos enpatados'),
-            trailing: Icon( Icons.arrow_forward),
-            tileColor: Color.fromARGB(197, 233, 229, 240),
-            iconColor: Color.fromARGB(214, 223, 16, 16),
-            textColor: Color.fromARGB(233, 7, 39, 243),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5),
-            ),
-            
-
-          ),
-          ),
+          ...cats.entries.map((cat){
+            return _tileCat(
+              cat.key,
+              cat.value,
+              Colors.blueAccent,
+              Colors.redAccent,
+              const Color.fromARGB(255, 179, 12, 12)  );
+          })
           
         ],
       ),
     );
+
   }
 
   Widget _tileDog(
@@ -66,11 +69,35 @@ class Screen3 extends StatelessWidget {
             title: Text(dogName),
             subtitle: Text('Que le dijo un pato a otro pato'),
             trailing: Icon( Icons.arrow_forward),
-            tileColor: Color.fromARGB(196, 247, 246, 247),
-            iconColor: Color.fromARGB(255, 68, 8, 235),
-            textColor: Color.fromARGB(233, 7, 39, 243),
+            tileColor: Color.fromARGB(23, 68, 66, 68),
+            iconColor: Color.fromARGB(255, 41, 1, 152),
+            textColor: Color.fromARGB(255, 6, 159, 134),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(25),
+            ),
+
+          );
+          final espacio = SizedBox(height: 10,);
+          return Column(children: [tile,espacio]);
+
+  }
+  Widget _tileCat(
+    String catName,
+    String catImage,
+    Color tileColor,
+    Color iconColor,
+    Color textColor,
+  ){
+    final tile = ListTile(
+            leading: Icon( Icons.pets),// tipo de icon
+            title:Align( alignment:  Alignment.centerLeft, child: Image.asset(catImage,width: 50, height: 50, )),
+            subtitle: Text(catName),
+            trailing: Icon( Icons.arrow_forward),
+            tileColor: Color.fromARGB(18, 32, 27, 27),
+            iconColor: Color.fromARGB(255, 46, 13, 112),
+            textColor: Color.fromARGB(255, 2, 67, 56),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(25),
             ),
 
           );
