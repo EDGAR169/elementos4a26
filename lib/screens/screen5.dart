@@ -12,6 +12,7 @@ class _Screen5State extends State<Screen5> {
  bool _switchValue = false;
  double _sliderValue = 0.0;
  TextEditingController _textController = TextEditingController();
+ int radioSelected =0;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +25,7 @@ class _Screen5State extends State<Screen5> {
         _entradaTexto(),
         _entradaSwitch(),
         _entradaSlider(),
+        _entradaRadio(),
         //Llamadas a lols widgeht de entrrada de datos
       ],
       )
@@ -33,13 +35,16 @@ class _Screen5State extends State<Screen5> {
 
   TextField _entradaTexto (){
     return TextField(
-      controller: _textController,
+      controller: _textController,//Controlador para controlar la caja de texto 
+      obscureText: false,
+      maxLength: 100,
+      maxLines: 3,
       decoration: InputDecoration(
         labelText: 'Nombre',
         hintText: 'Ingresa tu nombre',
-        border: OutlineInputBorder(),  
+        border: OutlineInputBorder (),  
       ),
-
+//input decoration para los estilos de la caja de texto
       onChanged: (value){
         print(  'Valor del TextFiled: $value');
       },
@@ -90,5 +95,65 @@ class _Screen5State extends State<Screen5> {
         ),
       ],
     );
+  }
+
+  Column _entradaRadio(){
+    final ListTile kotlin = ListTile(
+      title: const Text ('kotlin'),
+      leading: Transform.scale(
+        scale: 1.5,
+        child: Radio(
+          value:1,
+          groupValue: radioSelected,
+          onChanged: (value){
+            setState(() {
+              radioSelected = value!;
+              print('Seleccion del boton radio: $radioSelected');
+            });
+          },
+        )),
+    );
+
+    final ListTile flutter = ListTile(
+      title: const Text ('Flutter'),
+      leading: Transform.scale(
+        scale: 1.5,
+        child: Radio(
+          value:2,
+          groupValue: radioSelected,
+          onChanged: (value){
+            setState(() {
+              radioSelected = value!;
+              print('Seleccion del boton radio: $radioSelected');
+            });
+          },
+        )),
+    );
+    final ListTile react = ListTile(
+      title: const Text ('React native'),
+      leading: Transform.scale(
+        scale: 1.5,
+        child: Radio(
+          value:3,
+          groupValue: radioSelected,
+          onChanged: (value){
+            setState(() {
+              radioSelected = value!;
+              print('Seleccion del boton radio: $radioSelected');
+            });
+          },
+        )),
+    );
+
+
+    return Column(
+      children: [
+        Text('¿Que prefieres para desarrollo movil?'),
+        kotlin,
+        flutter,
+        react
+      ],
+    );
+    
   }
 }

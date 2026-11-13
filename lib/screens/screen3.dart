@@ -8,8 +8,8 @@ class Screen3 extends StatelessWidget {
     'Ginger': 'assets/imgs/img1.png',
     'KC' : 'assets/imgs/img2.png',
     'Nahoshi': 'assets/imgs/img3.png',
-    'Oscar' : 'assets/imgs/img4.jpg',
-    'Josue' : 'assets/imgs/img5.png' ,
+    'Josue' : 'assets/imgs/img4.jpg',
+    'Oscar' : 'assets/imgs/img5.png' ,
     'Aldo' : 'assets/imgs/pibble.jpg',
   };
 
